@@ -144,8 +144,8 @@ void draw() {
   }
 
   if (!srtmLoaded){
-    textAlign(CENTER);
-    text("stringdata", width/2, height/2); 
+    textFont(font);
+    text("< -- Please load a SRTM file! :)", 170, 620); 
   }
 
   if (showSeaLevelAtCursor) {
