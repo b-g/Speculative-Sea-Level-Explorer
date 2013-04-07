@@ -84,6 +84,7 @@ boolean savePng = false;
 
 boolean saveSequence = false;
 boolean animateUp = false;
+boolean srtmLoaded = false;
 int seaLevelChangeStepSize = 30;
 
 String prefix = "";
@@ -140,6 +141,11 @@ void draw() {
     } else if (g1.isOpen() && mouseX < 200) {
       drawOverlay();
     }
+  }
+
+  if (!srtmLoaded){
+    textAlign(CENTER);
+    text("stringdata", width/2, height/2); 
   }
 
   if (showSeaLevelAtCursor) {
@@ -298,8 +304,10 @@ void loadElevationData(File srtmFile) {
         counterY++;
       }
     }
+    srtmLoaded = true;
   } 
   catch (Exception e) {
+    srtmLoaded = false;
     println("### ERROR –> data loading ###");
   }
 
